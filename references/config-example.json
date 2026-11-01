@@ -1,0 +1,46 @@
+{
+  "_comment": "Config for `pcat.py plan`. Copy to _Catalog\\reorg_config.json and fill in from the intake interview. Keys starting with _ are ignored.",
+
+  "dest_root": "C:\\Users\\NAME\\Pictures\\Photo & Video Library",
+
+  "homes": [
+    {"label": "Hometown",  "from": "1990-01-01", "to": "2015-12-31", "lat": 40.0, "lon": -90.0, "radius_km": 80},
+    {"label": "Work city", "from": "2016-01-01", "to": "2999-12-31", "lat": 41.0, "lon": -91.0, "radius_km": 50}
+  ],
+  "_homes_example_note": "These homes are placeholders. Replace each label, date range (from/to) and lat/lon with the places you actually lived or worked.",
+  "_homes_note": "Overlapping periods are fine (a day is 'home' if it is inside ANY active home). Add temporary residences and regular work cities so they don't become dozens of tiny trips.",
+
+  "event_min_share": 0.8,
+  "event_window_days": 14,
+  "busy_day_min": 20,
+  "min_trip_files": 5,
+  "unit_depth": 1,
+
+  "dump_pattern": "(?i)(iphone|ipad|\\bphone\\b|phone\\s|backup|camera ?roll|dcim|\\d{3}apple|photo ?stream|\\bimport|upload|mobile|android|galaxy|pixel \\d)",
+
+  "side_folders": {
+    "(?i)^Family Slides/": "_Scans",
+    "(?i)^Scanner Images/": "_Scans",
+    "(?i)^(Partner Phone)": "_Others' Phones/Partner"
+  },
+  "skip_pattern": "(?i)^(Stock Photo Library)/",
+  "skip_organized": true,
+
+  "trusted_date_sources": ["exif", "video", "sequence", "manual"],
+  "_trusted_note": "Date sources plan() treats as real dates. 'sequence' = date-seq, 'manual' = set-dates.",
+
+  "library_catalog": "",
+  "_library_catalog_note": "Only for imports from another drive: path to the Library's catalog.jsonl so new files join existing event folders.",
+
+  "geonames": "",
+  "_geonames_note": "Leave empty to auto-use _Catalog\\cities15000.txt (download with `pcat.py geonames --dir <_Catalog>`).",
+
+  "overrides": {
+    "folders": {
+      "2017/2017-06-09 Some City, ST": "2017/2017-06-08 Friends' Wedding - Some City, ST"
+    },
+    "files": {
+      "iPhone Pics/IMG_0001.jpeg": "2017/2017-11-26 Family Photo Shoot - Some City, ST/IMG_0001.jpeg"
+    }
+  }
+}
